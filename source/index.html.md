@@ -42,7 +42,7 @@ There are three ways to start making requests to Alchemy directly.
 ### With POST Requests
 ```shell
 // Request
-curl -X POST --data '{"jsonrpc":"2.0","method":"eth_gasPrice","params":[],"id":73}' -H "Content-Type: application/json" "https://eth.alchemyapi.io"
+curl -X POST --data '{"jsonrpc":"2.0","method":"eth_gasPrice","params":[],"id":73}' -H "Content-Type: application/json" "https://eth.alchemyapi.io/jsonrpc/demo"
 
 // Result
 {
@@ -55,7 +55,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_gasPrice","params":[],"id":7
 ### With GET Requests
 ```shell
 // Request
-curl https://eth.alchemyapi.io/rest/eth_gasPrice
+curl https://eth.alchemyapi.io/web/demo/eth_gasPrice
 
 // Result
 {
@@ -68,7 +68,7 @@ curl https://eth.alchemyapi.io/rest/eth_gasPrice
 ### In Your Browser
 Some ETH endpoints can be viewed in the browser directly. For example:
 
-[https://eth.alchemyapi.io/rest/eth_gasPrice](https://eth.alchemyapi.io/rest/eth_gasPrice "ETH Gas Price")
+[https://eth.alchemyapi.io/web/demo/eth_gasPrice](https://eth.alchemyapi.io/web/demo/eth_gasPrice "ETH Gas Price")
 
 ## Configure Your Provider
 
@@ -93,7 +93,7 @@ Web3j web3 = Web3j.build(new HttpService("https://eth.alchemyapi.io/jsonrpc/<you
 Configuring Ethers.js to use Alchemy should be a simple change as well. Simply replace your provider with a JSON RPC provider pointing to Alchemy.
 
 ```javascript
-let url = "https://eth.alchemyapi.io";
+let url = "https://eth.alchemyapi.io/json/<your-token>";
 let customHttpProvider = new ethers.providers.JsonRpcProvider(url);
 ```
 
