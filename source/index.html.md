@@ -2,7 +2,7 @@
 title: API Reference
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
+  - <a href='mailto:api@alchemyinsights.io?subject=I%20would%20like%20an%20API%20Key'>Sign Up for a Developer Key</a>
   - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
 
 includes:
@@ -13,7 +13,7 @@ search: true
 
 # Introduction
 
-Welcome to the Alchemy API!
+Welcome to the Alchemy API: the enterprise grade Ethereum API.
 
 # Getting Started
 
@@ -21,9 +21,9 @@ In most cases getting set up with the Alchemy API takes less than 5 minutes. Jus
 
 ## Get an API Key
 
-To start hitting the Alchemy API, you'll need an API key. If your already in contact with the Alchemy team, they can create one for you. Otherwise, send a message to api@alchemyinsights.io including the networks you'd like access to, and we can get one created for you!
+To start hitting the Alchemy API, you'll need an API key. If your already in contact with the Alchemy team, they can create one for you. Otherwise, send a message to [api@alchemyinsights.io](mailto:api@alchemyinsights.io?subject=I%20would%20like%20an%20API%20Key) including the networks you'd like access to, and we can get one created for you!
 
-Once you have your API key, you can start hitting your nodes by adding it
+Once you have your API key, you can start hitting your nodes!
 
 ## Choose Your Networks
 
