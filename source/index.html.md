@@ -1,5 +1,5 @@
 ---
-title: API Reference
+title: Alchemy API Documentation
 
 toc_footers:
   - <a href='mailto:api@alchemyinsights.io?subject=I%20would%20like%20an%20API%20Key'>Sign Up for a Developer Key</a>
@@ -17,7 +17,8 @@ Welcome to the Alchemy API: the enterprise grade Ethereum API.
 
 # Getting Started
 
-In most cases getting set up with the Alchemy API takes less than 5 minutes. Just choose your networks, get your key, and configure your provider (which often is a single line change)
+In most cases getting set up with the Alchemy API takes less than 5 minutes. Just choose your networks, [get your key](mailto:api@alchemyinsights.io?subject=I%20would%20like%20an%20API%20Key), and configure your provider (which often is a single line change)
+
 
 ## Get an API Key
 
@@ -29,12 +30,21 @@ Once you have your API key, you can start hitting your nodes!
 
 To make requests to the Alchemy API, you'll need to choose which Ethereum network you'd like to hit. Right now, we support the Ethereum Mainnet, and the three most popular testnets: Kovan, Rinkeby, and Ropsten.
 
+### Development/Staging URLs
 Network | URL |
 -------------- | -------------- |
-Mainnet | https://eth.alchemyapi.io/jsonrpc/**your_api_key**
-Kovan | https://eth-kovan.alchemyapi.io/jsonrpc/**your_api_key**
-Rinkeby | https://eth-rinkeby.alchemyapi.io/jsonrpc/**your_api_key**
-Ropsten | https://eth-ropsten.alchemyapi.io/jsonrpc/**your_api_key**
+Mainnet | https://eth.alchemyapi.io/jsonrpc/<span class="dev-api-key">**your_dev_api_key**</span>
+Kovan | https://eth-kovan.alchemyapi.io/jsonrpc/<span class="dev-api-key">**your_dev_api_key**</span>
+Rinkeby | https://eth-rinkeby.alchemyapi.io/jsonrpc/<span class="dev-api-key">**your_dev_api_key**</span>
+Ropsten | https://eth-ropsten.alchemyapi.io/jsonrpc/<span class="dev-api-key">**your_dev_api_key**</span>
+
+### Production URLs
+Network | URL |
+-------------- | -------------- |
+Mainnet | https://eth.alchemyapi.io/jsonrpc/<span class="prod-api-key">**your_prod_api_key**</span>
+Kovan | https://eth-kovan.alchemyapi.io/jsonrpc/<span class="prod-api-key">**your_prod_api_key**</span>
+Rinkeby | https://eth-rinkeby.alchemyapi.io/jsonrpc/<span class="prod-api-key">**your_prod_api_key**</span>
+Ropsten | https://eth-ropsten.alchemyapi.io/jsonrpc/<span class="prod-api-key">**your_prod_api_key**</span>
 
 ## Start Making requests
 There are three ways to start making requests to Alchemy directly.
@@ -42,7 +52,7 @@ There are three ways to start making requests to Alchemy directly.
 ### With POST Requests
 ```shell
 // Request
-curl -X POST --data '{"jsonrpc":"2.0","method":"eth_gasPrice","params":[],"id":73}' -H "Content-Type: application/json" "https://eth.alchemyapi.io/jsonrpc/demo"
+curl -X POST --data '{"jsonrpc":"2.0","method":"eth_gasPrice","params":[],"id":73}' -H "Content-Type: application/json" "https://eth.alchemyapi.io/jsonrpc/demo</span>"
 
 // Result
 {
