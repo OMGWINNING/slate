@@ -33,7 +33,7 @@ To make requests to the Alchemy API, you'll need to choose which Ethereum networ
 ### Development/Staging URLs
 Network | URL |
 -------------- | -------------- |
-Mainnet | https://eth.alchemyapi.io/jsonrpc/<span class="dev-api-key">**your_dev_api_key**</span>
+Mainnet | https://eth-mainnet.alchemyapi.io/jsonrpc/<span class="dev-api-key">**your_dev_api_key**</span>
 Kovan | https://eth-kovan.alchemyapi.io/jsonrpc/<span class="dev-api-key">**your_dev_api_key**</span>
 Rinkeby | https://eth-rinkeby.alchemyapi.io/jsonrpc/<span class="dev-api-key">**your_dev_api_key**</span>
 Ropsten | https://eth-ropsten.alchemyapi.io/jsonrpc/<span class="dev-api-key">**your_dev_api_key**</span>
@@ -41,7 +41,7 @@ Ropsten | https://eth-ropsten.alchemyapi.io/jsonrpc/<span class="dev-api-key">**
 ### Production URLs
 Network | URL |
 -------------- | -------------- |
-Mainnet | https://eth.alchemyapi.io/jsonrpc/<span class="prod-api-key">**your_prod_api_key**</span>
+Mainnet | https://eth-mainnet.alchemyapi.io/jsonrpc/<span class="prod-api-key">**your_prod_api_key**</span>
 Kovan | https://eth-kovan.alchemyapi.io/jsonrpc/<span class="prod-api-key">**your_prod_api_key**</span>
 Rinkeby | https://eth-rinkeby.alchemyapi.io/jsonrpc/<span class="prod-api-key">**your_prod_api_key**</span>
 Ropsten | https://eth-ropsten.alchemyapi.io/jsonrpc/<span class="prod-api-key">**your_prod_api_key**</span>
@@ -52,7 +52,7 @@ There are three ways to start making requests to Alchemy directly.
 ### With POST Requests
 ```shell
 // Request
-curl -X POST --data '{"jsonrpc":"2.0","method":"eth_gasPrice","params":[],"id":73}' -H "Content-Type: application/json" "https://eth.alchemyapi.io/jsonrpc/demo</span>"
+curl -X POST --data '{"jsonrpc":"2.0","method":"eth_gasPrice","params":[],"id":73}' -H "Content-Type: application/json" "https://eth-mainnet.alchemyapi.io/jsonrpc/demo</span>"
 
 // Result
 {
@@ -65,7 +65,7 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_gasPrice","params":[],"id":7
 ### With GET Requests
 ```shell
 // Request
-curl https://eth.alchemyapi.io/web/demo/eth_gasPrice
+curl https://eth-mainnet.alchemyapi.io/web/demo/eth_gasPrice
 
 // Result
 {
@@ -78,7 +78,7 @@ curl https://eth.alchemyapi.io/web/demo/eth_gasPrice
 ### In Your Browser
 Some ETH endpoints can be viewed in the browser directly. For example:
 
-[https://eth.alchemyapi.io/web/demo/eth_gasPrice](https://eth.alchemyapi.io/web/demo/eth_gasPrice "ETH Gas Price")
+[https://eth-mainnet.alchemyapi.io/web/demo/eth_gasPrice](https://eth-mainnet.alchemyapi.io/web/demo/eth_gasPrice "ETH Gas Price")
 
 ## Configure Your Provider
 
@@ -87,15 +87,15 @@ Some ETH endpoints can be viewed in the browser directly. For example:
 Using Alchemy with Web3 is as simple as a one-line configuration change, regardless of which flavor you use. Simply update the instantiation of the Web3 client to use the Alchemy URL of your choice.
 
 ```javascript
-web3 = new Web3(new Web3.providers.HttpProvider("https://eth.alchemyapi.io/jsonrpc/<your-token>"));
+web3 = new Web3(new Web3.providers.HttpProvider("https://eth-mainnet.alchemyapi.io/jsonrpc/<your-token>"));
 ```
 
 ```python
-web3 = Web3(HTTPProvider("https://eth.alchemyapi.io/jsonrpc/<your-token>"))
+web3 = Web3(HTTPProvider("https://eth-mainnet.alchemyapi.io/jsonrpc/<your-token>"))
 ```
 
 ```java
-Web3j web3 = Web3j.build(new HttpService("https://eth.alchemyapi.io/jsonrpc/<your-token>"));
+Web3j web3 = Web3j.build(new HttpService("https://eth-mainnet.alchemyapi.io/jsonrpc/<your-token>"));
 ```
 
 ### Ethers.js
@@ -103,7 +103,7 @@ Web3j web3 = Web3j.build(new HttpService("https://eth.alchemyapi.io/jsonrpc/<you
 Configuring Ethers.js to use Alchemy should be a simple change as well. Simply replace your provider with a JSON RPC provider pointing to Alchemy.
 
 ```javascript
-let url = "https://eth.alchemyapi.io/json/<your-token>";
+let url = "https://eth-mainnet.alchemyapi.io/json/<your-token>";
 let customHttpProvider = new ethers.providers.JsonRpcProvider(url);
 ```
 
