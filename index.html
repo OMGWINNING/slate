@@ -342,7 +342,7 @@
 </thead><tbody>
 <tr>
 <td>Mainnet</td>
-<td>https://eth.alchemyapi.io/jsonrpc/<span class="dev-api-key"><strong>your_dev_api_key</strong></span></td>
+<td>https://eth-mainnet.alchemyapi.io/jsonrpc/<span class="dev-api-key"><strong>your_dev_api_key</strong></span></td>
 </tr>
 <tr>
 <td>Kovan</td>
@@ -366,7 +366,7 @@
 </thead><tbody>
 <tr>
 <td>Mainnet</td>
-<td>https://eth.alchemyapi.io/jsonrpc/<span class="prod-api-key"><strong>your_prod_api_key</strong></span></td>
+<td>https://eth-mainnet.alchemyapi.io/jsonrpc/<span class="prod-api-key"><strong>your_prod_api_key</strong></span></td>
 </tr>
 <tr>
 <td>Kovan</td>
@@ -384,7 +384,7 @@
 <h2 id='start-making-requests'>Start Making requests</h2>
 <p>There are three ways to start making requests to Alchemy directly.</p>
 <h3 id='with-post-requests'>With POST Requests</h3><pre class="highlight shell tab-shell"><code>// Request
-curl -X POST --data <span class="s1">'{"jsonrpc":"2.0","method":"eth_gasPrice","params":[],"id":73}'</span> -H <span class="s2">"Content-Type: application/json"</span> <span class="s2">"https://eth.alchemyapi.io/jsonrpc/demo&lt;/span&gt;"</span>
+curl -X POST --data <span class="s1">'{"jsonrpc":"2.0","method":"eth_gasPrice","params":[],"id":73}'</span> -H <span class="s2">"Content-Type: application/json"</span> <span class="s2">"https://eth-mainnet.alchemyapi.io/jsonrpc/demo&lt;/span&gt;"</span>
 
 // Result
 <span class="o">{</span>
@@ -393,7 +393,7 @@ curl -X POST --data <span class="s1">'{"jsonrpc":"2.0","method":"eth_gasPrice","
   <span class="s2">"result"</span>: <span class="s2">"0x09184e72a000"</span> // 10000000000000
 <span class="o">}</span>
 </code></pre><h3 id='with-get-requests'>With GET Requests</h3><pre class="highlight shell tab-shell"><code>// Request
-curl https://eth.alchemyapi.io/web/demo/eth_gasPrice
+curl https://eth-mainnet.alchemyapi.io/web/demo/eth_gasPrice
 
 // Result
 <span class="o">{</span>
@@ -404,15 +404,15 @@ curl https://eth.alchemyapi.io/web/demo/eth_gasPrice
 </code></pre><h3 id='in-your-browser'>In Your Browser</h3>
 <p>Some ETH endpoints can be viewed in the browser directly. For example:</p>
 
-<p><a href="https://eth.alchemyapi.io/web/demo/eth_gasPrice" title="ETH Gas Price">https://eth.alchemyapi.io/web/demo/eth_gasPrice</a></p>
+<p><a href="https://eth-mainnet.alchemyapi.io/web/demo/eth_gasPrice" title="ETH Gas Price">https://eth-mainnet.alchemyapi.io/web/demo/eth_gasPrice</a></p>
 <h2 id='configure-your-provider'>Configure Your Provider</h2><h3 id='web3'>Web3</h3>
 <p>Using Alchemy with Web3 is as simple as a one-line configuration change, regardless of which flavor you use. Simply update the instantiation of the Web3 client to use the Alchemy URL of your choice.</p>
-<pre class="highlight javascript tab-javascript"><code><span class="nx">web3</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Web3</span><span class="p">(</span><span class="k">new</span> <span class="nx">Web3</span><span class="p">.</span><span class="nx">providers</span><span class="p">.</span><span class="nx">HttpProvider</span><span class="p">(</span><span class="s2">"https://eth.alchemyapi.io/jsonrpc/&lt;your-token&gt;"</span><span class="p">));</span>
-</code></pre><pre class="highlight python tab-python"><code><span class="n">web3</span> <span class="o">=</span> <span class="n">Web3</span><span class="p">(</span><span class="n">HTTPProvider</span><span class="p">(</span><span class="s">"https://eth.alchemyapi.io/jsonrpc/&lt;your-token&gt;"</span><span class="p">))</span>
-</code></pre><pre class="highlight java tab-java"><code><span class="n">Web3j</span> <span class="n">web3</span> <span class="o">=</span> <span class="n">Web3j</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="k">new</span> <span class="n">HttpService</span><span class="o">(</span><span class="s">"https://eth.alchemyapi.io/jsonrpc/&lt;your-token&gt;"</span><span class="o">));</span>
+<pre class="highlight javascript tab-javascript"><code><span class="nx">web3</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Web3</span><span class="p">(</span><span class="k">new</span> <span class="nx">Web3</span><span class="p">.</span><span class="nx">providers</span><span class="p">.</span><span class="nx">HttpProvider</span><span class="p">(</span><span class="s2">"https://eth-mainnet.alchemyapi.io/jsonrpc/&lt;your-token&gt;"</span><span class="p">));</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="n">web3</span> <span class="o">=</span> <span class="n">Web3</span><span class="p">(</span><span class="n">HTTPProvider</span><span class="p">(</span><span class="s">"https://eth-mainnet.alchemyapi.io/jsonrpc/&lt;your-token&gt;"</span><span class="p">))</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="n">Web3j</span> <span class="n">web3</span> <span class="o">=</span> <span class="n">Web3j</span><span class="o">.</span><span class="na">build</span><span class="o">(</span><span class="k">new</span> <span class="n">HttpService</span><span class="o">(</span><span class="s">"https://eth-mainnet.alchemyapi.io/jsonrpc/&lt;your-token&gt;"</span><span class="o">));</span>
 </code></pre><h3 id='ethers-js'>Ethers.js</h3>
 <p>Configuring Ethers.js to use Alchemy should be a simple change as well. Simply replace your provider with a JSON RPC provider pointing to Alchemy.</p>
-<pre class="highlight javascript tab-javascript"><code><span class="kd">let</span> <span class="nx">url</span> <span class="o">=</span> <span class="s2">"https://eth.alchemyapi.io/json/&lt;your-token&gt;"</span><span class="p">;</span>
+<pre class="highlight javascript tab-javascript"><code><span class="kd">let</span> <span class="nx">url</span> <span class="o">=</span> <span class="s2">"https://eth-mainnet.alchemyapi.io/json/&lt;your-token&gt;"</span><span class="p">;</span>
 <span class="kd">let</span> <span class="nx">customHttpProvider</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ethers</span><span class="p">.</span><span class="nx">providers</span><span class="p">.</span><span class="nx">JsonRpcProvider</span><span class="p">(</span><span class="nx">url</span><span class="p">);</span>
 </code></pre><h1 id='alchemy-api-reference'>Alchemy API Reference</h1><h2 id='eth_blocknumber'>eth_blockNumber</h2>
 <p>Returns the number of most recent block.</p>
