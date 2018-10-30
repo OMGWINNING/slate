@@ -2,7 +2,7 @@
 title: Alchemy API Documentation
 
 toc_footers:
-  - <a href='mailto:api@alchemyinsights.io?subject=I%20would%20like%20an%20API%20Key'>Sign Up for a Developer Key</a>
+  - <a href='mailto:api@alchemyinsights.io?subject=I%20would%20like%20an%20API%20Key'>Sign Up for an Alchemy Developer Key</a>
   - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
 
 includes:
@@ -17,14 +17,14 @@ Welcome to the Alchemy API: the enterprise grade Ethereum API.
 
 # Getting Started
 
-In most cases getting set up with the Alchemy API takes less than 5 minutes. Just choose your networks, [get your key](mailto:api@alchemyinsights.io?subject=I%20would%20like%20an%20API%20Key), and configure your provider (which often is a single line change)
+Getting started with the Alchemy API takes less than 5 minutes. Just [get your key](mailto:api@alchemyinsights.io?subject=I%20would%20like%20an%20API%20Key), choose your networks, and configure your provider (which often is a single line change).
 
 
 ## Get an API Key
 
-To start hitting the Alchemy API, you'll need an API key. If you are already in contact with the Alchemy team, they can create one for you. Otherwise, send a message to [api@alchemyinsights.io](mailto:api@alchemyinsights.io?subject=I%20would%20like%20an%20API%20Key) including the networks you'd like access to, and we can get one created for you!
+To start hitting the Alchemy API, you'll need an API key to authenticate your requests. If you are already in contact with the Alchemy team, they can create one for you. Otherwise, send a message to [api@alchemyinsights.io](mailto:api@alchemyinsights.io?subject=I%20would%20like%20an%20API%20Key) including the networks you'd like access to, and we can get one created for you! API keys come with pretty high default rate limits, but just contact us if you're concerned about [rate limit errors](#errors).
 
-Once you have your API key, you can start hitting your nodes!
+Once you have your API key, just choose a network and start making requests!
 
 ## Choose Your Networks
 
@@ -50,10 +50,18 @@ Ropsten | https://eth-ropsten.alchemyapi.io/jsonrpc/<span class="prod-api-key">*
 There are three ways to start making requests to Alchemy directly.
 
 ### With POST Requests
+For JSON-RPC `POST` requests, pass in the `Content-Type: application/json` header and your query as the `POST` body with the following fields:
+
 ```shell
 // Request
-curl -X POST --data '{"jsonrpc":"2.0","method":"eth_gasPrice","params":[],"id":73}' -H "Content-Type: application/json" "https://eth-mainnet.alchemyapi.io/jsonrpc/demo</span>"
+curl https://eth-mainnet.alchemyapi.io/jsonrpc/demo \
+-X POST \
+-H "Content-Type: application/json" \
+-d '{"jsonrpc":"2.0","method":"eth_gasPrice","params":[],"id":73}'
 
+```
+
+```json
 // Result
 {
   "id": 73,
@@ -62,11 +70,20 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_gasPrice","params":[],"id":7
 }
 ```
 
+  - `jsonrpc`: The JSON-RPC version—currently, only `2.0` is supported.
+  - `method`: The ETH API method. [See the API reference below](#alchemy-api-reference).
+  - `params`: A list of parameters to pass to the method.
+  - `id`: The ID of your request. Will be returned by the response so you can keep track of which request a response belongs to.
+
+
 ### With GET Requests
+
 ```shell
 // Request
 curl https://eth-mainnet.alchemyapi.io/web/demo/eth_gasPrice
+```
 
+```json
 // Result
 {
   "id": 73,
@@ -76,7 +93,7 @@ curl https://eth-mainnet.alchemyapi.io/web/demo/eth_gasPrice
 ```
 
 ### In Your Browser
-Some ETH endpoints can be viewed in the browser directly. For example:
+Some ETH JSON-RPC endpoints can be viewed in the browser directly. For example:
 
 [https://eth-mainnet.alchemyapi.io/web/demo/eth_gasPrice](https://eth-mainnet.alchemyapi.io/web/demo/eth_gasPrice "ETH Gas Price")
 
@@ -116,15 +133,22 @@ none
 ### Returns
 QUANTITY - integer of the current block number the client is on.
 ### Example
+```shell
 // Request
-curl -X POST --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":83}'
+curl https://eth-mainnet.alchemyapi.io/jsonrpc/<your-token> \
+-X POST \
+-H "Content-Type: application/json" \
+-d '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":83}'
+```
 
+```shell
 // Result
 {
   "id":83,
   "jsonrpc": "2.0",
   "result": "0xc94" // 1207
 }
+```
 
 ## eth_gasPrice
 Returns the current price per gas in wei.
@@ -133,15 +157,24 @@ none
 ### Returns
 QUANTITY - integer of the current gas price in wei.
 ### Example
-// Request
-curl -X POST --data '{"jsonrpc":"2.0","method":"eth_gasPrice","params":[],"id":73}'
 
+```shell
+// Request
+curl https://eth-mainnet.alchemyapi.io/jsonrpc/<your-token> \
+-X POST \
+-H "Content-Type: application/json" \
+-d '{"jsonrpc":"2.0","method":"eth_gasPrice","params":[],"id":73}'
+
+```
+
+```shell
 // Result
 {
   "id":73,
   "jsonrpc": "2.0",
   "result": "0x09184e72a000" // 10000000000000
 }
+```
 
 ## eth_getBalance
 Returns the balance of the account of given address.
