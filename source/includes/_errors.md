@@ -2,6 +2,11 @@
 
 In addition to the standard [Ethereum JSON-RPC error codes](https://github.com/ethereum/wiki/wiki/JSON-RPC-Error-Codes-Improvement-Proposal#json-rpc-standard-errors), the Alchemy API will return the following error codes:
 
+```json
+// 401 error
+{"error": "Must be authenticated!"}
+```
+
 Error Code | Meaning
 ---------- | -------
 400 | Bad Request -- Your request is invalid. Double-check your JSON-RPC body
@@ -10,9 +15,11 @@ Error Code | Meaning
 500 | Internal Server Error -- We're unable to process your request right now. Get in touch with us if you see this.
 
 
+
 For JSON-RPC specific errors, the Alchemy API returns a `200` with the JSON-RPC error in the JSON response:
 
 ```json
+// Example JSON-RPC error
 {
     "jsonrpc":"2.0",
     "error":{
