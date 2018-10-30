@@ -13,7 +13,7 @@ search: true
 
 # Introduction
 
-Welcome to the Alchemy API: the enterprise grade Ethereum API.
+Welcome to the Alchemy API: the enterprise grade Ethereum API. Instead of having to run your own nodes and dealing with all of the headaches that come with it, just plug into our API and get back to focusing on developing your application.
 
 # Getting Started
 
@@ -50,7 +50,6 @@ Ropsten | https://eth-ropsten.alchemyapi.io/jsonrpc/<span class="prod-api-key">*
 There are three ways to start making requests to Alchemy directly.
 
 ### With POST Requests
-For JSON-RPC `POST` requests, pass in the `Content-Type: application/json` header and your query as the `POST` body with the following fields:
 
 ```shell
 // Request
@@ -70,10 +69,21 @@ curl https://eth-mainnet.alchemyapi.io/jsonrpc/demo \
 }
 ```
 
+We recommend interacting with the `JSON-RPC` via `POST` requests. Simply pass in the `Content-Type: application/json` header and your query as the `POST` body with the following fields:
+
   - `jsonrpc`: The JSON-RPC version—currently, only `2.0` is supported.
   - `method`: The ETH API method. [See the API reference below](#alchemy-api-reference).
   - `params`: A list of parameters to pass to the method.
   - `id`: The ID of your request. Will be returned by the response so you can keep track of which request a response belongs to.
+
+<!-- Padding to line up code with sections -->
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
 
 
 ### With GET Requests
@@ -92,47 +102,61 @@ curl https://eth-mainnet.alchemyapi.io/web/demo/eth_gasPrice
 }
 ```
 
+While we recommend using `POST` requests, we also offer basic support for `GET` requests. The response will still be in JSON-RPC format.
+
+
 ### In Your Browser
 Some ETH JSON-RPC endpoints can be viewed in the browser directly. For example:
 
 [https://eth-mainnet.alchemyapi.io/web/demo/eth_gasPrice](https://eth-mainnet.alchemyapi.io/web/demo/eth_gasPrice "ETH Gas Price")
 
+
 ## Configure Your Provider
 
 ### Web3
 
-Using Alchemy with Web3 is as simple as a one-line configuration change, regardless of which flavor you use. Simply update the instantiation of the Web3 client to use the Alchemy URL of your choice.
-
 ```javascript
+// Javascript: web3js
 web3 = new Web3(new Web3.providers.HttpProvider("https://eth-mainnet.alchemyapi.io/jsonrpc/<your-token>"));
 ```
-
-```python
+```python 
+# Python: web3py
 web3 = Web3(HTTPProvider("https://eth-mainnet.alchemyapi.io/jsonrpc/<your-token>"))
 ```
-
-```java
+```java 
+// Java:web3j
 Web3j web3 = Web3j.build(new HttpService("https://eth-mainnet.alchemyapi.io/jsonrpc/<your-token>"));
 ```
 
-### Ethers.js
+Using Alchemy with Web3 is as simple as a one-line configuration change, regardless of which flavor you use. Simply update the instantiation of the Web3 client to use the Alchemy URL of your choice.
 
-Configuring Ethers.js to use Alchemy should be a simple change as well. Simply replace your provider with a JSON RPC provider pointing to Alchemy.
+See the official docs:
+
+ - [Web3js](https://web3js.readthedocs.io/)
+ - [Web3py](https://web3py.readthedocs.io)
+ - [Web3j](https://docs.web3j.io)
+
+<!-- Padding to line up code with sections -->
+
+<br/>
+<br/>
+<br/>
+
+### Ethers.js
 
 ```javascript
 let url = "https://eth-mainnet.alchemyapi.io/json/<your-token>";
 let customHttpProvider = new ethers.providers.JsonRpcProvider(url);
 ```
 
+Configuring Ethers.js to use Alchemy should be a simple change as well. Simply replace your provider with a JSON RPC provider pointing to Alchemy.
+
+
+
 # Alchemy API Reference
 
 ## eth_blockNumber
-Returns the number of most recent block.
-### Parameters
-none
-### Returns
-QUANTITY - integer of the current block number the client is on.
-### Example
+
 ```shell
 // Request
 curl https://eth-mainnet.alchemyapi.io/jsonrpc/<your-token> \
@@ -141,7 +165,7 @@ curl https://eth-mainnet.alchemyapi.io/jsonrpc/<your-token> \
 -d '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":83}'
 ```
 
-```shell
+```json
 // Result
 {
   "id":83,
@@ -150,14 +174,14 @@ curl https://eth-mainnet.alchemyapi.io/jsonrpc/<your-token> \
 }
 ```
 
-## eth_gasPrice
-Returns the current price per gas in wei.
+Returns the number of most recent block.
 ### Parameters
 none
 ### Returns
-QUANTITY - integer of the current gas price in wei.
-### Example
+`QUANTITY` - integer of the current block number the client is on.
 
+
+## eth_gasPrice
 ```shell
 // Request
 curl https://eth-mainnet.alchemyapi.io/jsonrpc/<your-token> \
@@ -167,7 +191,7 @@ curl https://eth-mainnet.alchemyapi.io/jsonrpc/<your-token> \
 
 ```
 
-```shell
+```json
 // Result
 {
   "id":73,
@@ -175,63 +199,53 @@ curl https://eth-mainnet.alchemyapi.io/jsonrpc/<your-token> \
   "result": "0x09184e72a000" // 10000000000000
 }
 ```
+Returns the current price per gas in wei.
+### Parameters
+none
+### Returns
+`QUANTITY` - integer of the current gas price in wei.
+
 
 ## eth_getBalance
-Returns the balance of the account of given address.
-### Parameters
-DATA, 20 Bytes - address to check for balance.
-QUANTITY|TAG - integer block number, or the string "latest", "earliest" or "pending", see the default block parameter
-params: [
-   '0xc94770007dda54cF92009BFF0dE90c06F603a09f',
-   'latest'
-]
-### Returns
-QUANTITY - integer of the current balance in wei.
-### Example
+```shell
 // Request
-curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getBalance","params":["0xc94770007dda54cF92009BFF0dE90c06F603a09f", "latest"],"id":1}'
+curl https://eth-mainnet.alchemyapi.io/jsonrpc/<your-token> \
+-X POST
+-H "Content-Type: application/json" \
+-d '{"jsonrpc":"2.0","method":"eth_getBalance","params":["0xc94770007dda54cF92009BFF0dE90c06F603a09f", "latest"],"id":1}'
+```
 
+```json
 // Result
 {
   "id":1,
   "jsonrpc": "2.0",
   "result": "0x0234c8a3397aab58" // 158972490234375000
 }
+```
+Returns the balance of the account of given address.
+### Parameters
+
+ - `DATA`, 20 Bytes - address to check for balance.
+ - `QUANTITY|TAG` - integer block number, or the string "latest", "earliest" or "pending", see the default block parameter
+
+`params: ['0xc94770007dda54cF92009BFF0dE90c06F603a09f','latest']
+`
+### Returns
+`QUANTITY` - integer of the current balance in wei.
+
 
 ## eth_getBlockByHash
-Returns information about a block by hash.
-### Parameters
-DATA, 32 Bytes - Hash of a block.
-Boolean - If true it returns the full transaction objects, if false only the hashes of the transactions.
-params: [
-   '0xe670ec64341771606e55d6b4ca35a1a6b75ee3d5145a99d05921026d1527331',
-   true
-]
-### Returns
-Object - A block object, or null when no block was found:
-number: QUANTITY - the block number. null when its pending block.
-hash: DATA, 32 Bytes - hash of the block. null when its pending block.
-parentHash: DATA, 32 Bytes - hash of the parent block.
-nonce: DATA, 8 Bytes - hash of the generated proof-of-work. null when its pending block.
-sha3Uncles: DATA, 32 Bytes - SHA3 of the uncles data in the block.
-logsBloom: DATA, 256 Bytes - the bloom filter for the logs of the block. null when its pending block.
-transactionsRoot: DATA, 32 Bytes - the root of the transaction trie of the block.
-stateRoot: DATA, 32 Bytes - the root of the final state trie of the block.
-receiptsRoot: DATA, 32 Bytes - the root of the receipts trie of the block.
-miner: DATA, 20 Bytes - the address of the beneficiary to whom the mining rewards were given.
-difficulty: QUANTITY - integer of the difficulty for this block.
-totalDifficulty: QUANTITY - integer of the total difficulty of the chain until this block.
-extraData: DATA - the "extra data" field of this block.
-size: QUANTITY - integer the size of this block in bytes.
-gasLimit: QUANTITY - the maximum gas allowed in this block.
-gasUsed: QUANTITY - the total used gas by all transactions in this block.
-timestamp: QUANTITY - the unix timestamp for when the block was collated.
-transactions: Array - Array of transaction objects, or 32 Bytes transaction hashes depending on the last given parameter.
-uncles: Array - Array of uncle hashes.
-### Example
-// Request
-curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getBlockByHash","params":["0xe670ec64341771606e55d6b4ca35a1a6b75ee3d5145a99d05921026d1527331", true],"id":1}'
 
+```curl
+// Request
+curl https://eth-mainnet.alchemyapi.io/jsonrpc/<your-token> \
+-X POST
+-H "Content-Type: application/json" \
+-d '{"jsonrpc":"2.0","method":"eth_getBlockByHash","params":["0xe670ec64341771606e55d6b4ca35a1a6b75ee3d5145a99d05921026d1527331", true],"id":1}'
+```
+
+```json
 // Result
 {
 "id":1,
@@ -257,22 +271,84 @@ curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getBlockByHash","params":["0
     "uncles": ["0x1606e5...", "0xd5145a9..."]
   }
 }
+```
+
+Returns information about a block by hash.
+### Parameters
+ - `DATA`, 32 Bytes - Hash of a block.
+ - `Boolean` - If true it returns the full transaction objects, if false only the hashes of the transactions.
+`params: ['0xe670ec64341771606e55d6b4ca35a1a6b75ee3d5145a99d05921026d1527331',true]`
+### Returns
+`Object` - A block object with the following fields, or null when no block was found:
+
+ - `number`: QUANTITY - the block number. null when its pending block.
+ - `hash`: DATA, 32 Bytes - hash of the block. null when its pending block.
+ - `parentHash`: DATA, 32 Bytes - hash of the parent block.
+ - `nonce`: DATA, 8 Bytes - hash of the generated proof-of-work. null when its pending block.
+ - `sha3Uncles`: DATA, 32 Bytes - SHA3 of the uncles data in the block.
+ - `logsBloom`: DATA, 256 Bytes - the bloom filter for the logs of the block. null when its pending block.
+ - `transactionsRoot`: DATA, 32 Bytes - the root of the transaction trie of the block.
+ - `stateRoot`: DATA, 32 Bytes - the root of the final state trie of the block.
+ - `receiptsRoot`: DATA, 32 Bytes - the root of the receipts trie of the block.
+ - `miner`: DATA, 20 Bytes - the address of the beneficiary to whom the mining rewards were given.
+ - `difficulty`: QUANTITY - integer of the difficulty for this block.
+ - `totalDifficulty`: QUANTITY - integer of the total difficulty of the chain until this block.
+ - `extraData`: DATA - the "extra data" field of this block.
+ - `size`: QUANTITY - integer the size of this block in bytes.
+ - `gasLimit`: QUANTITY - the maximum gas allowed in this block.
+ - `gasUsed`: QUANTITY - the total used gas by all transactions in this block.
+ - `timestamp`: QUANTITY - the unix timestamp for when the block was collated.
+ - `transactions`: Array - Array of transaction objects, or 32 Bytes transaction hashes depending on the last given parameter.
+ - `uncles`: Array - Array of uncle hashes.
+
 
 ## eth_getBlockByNumber
+```shell
+// Request
+curl https://eth-mainnet.alchemyapi.io/jsonrpc/<your-token> \
+-X POST \
+-H "Content-Type: application/json" \
+-d '{"jsonrpc":"2.0","method":"eth_getBlockByNumber","params":["0x1b4", true],"id":1}'
+```
+
+```json
+// Result
+{
+"id":1,
+"jsonrpc":"2.0",
+"result": {
+    "number": "0x1b4", // 436
+    "hash": "0xe670ec64341771606e55d6b4ca35a1a6b75ee3d5145a99d05921026d1527331",
+    "parentHash": "0x9646252be9520f6e71339a8df9c55e4d7619deeb018d2a3f2d21fc165dde5eb5",
+    "nonce": "0xe04d296d2460cfb8472af2c5fd05b5a214109c25688d3704aed5484f9a7792f2",
+    "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
+    "logsBloom": "0xe670ec64341771606e55d6b4ca35a1a6b75ee3d5145a99d05921026d1527331",
+    "transactionsRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421",
+    "stateRoot": "0xd5855eb08b3387c0af375e9cdb6acfc05eb8f519e419b874b6ff2ffda7ed1dff",
+    "miner": "0x4e65fda2159562a496f9f3522f89122a3088497a",
+    "difficulty": "0x027f07", // 163591
+    "totalDifficulty":  "0x027f07", // 163591
+    "extraData": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "size":  "0x027f07", // 163591
+    "gasLimit": "0x9f759", // 653145
+    "gasUsed": "0x9f759", // 653145
+    "timestamp": "0x54e34e8e" // 1424182926
+    "transactions": [{...},{ ... }]
+    "uncles": ["0x1606e5...", "0xd5145a9..."]
+  }
+}
+```
+
 Returns information about a block by block number.
 ### Parameters
-QUANTITY|TAG - integer of a block number, or the string "earliest", "latest" or "pending", as in the default block parameter.
-Boolean - If true it returns the full transaction objects, if false only the hashes of the transactions.
-params: [
-   '0x1b4', // 436
-   true
-]
+
+ - `QUANTITY|TAG` - integer of a block number, or the string "earliest", "latest" or "pending", as in the default block parameter.
+ - `Boolean` - If true it returns the full transaction objects, if false only the hashes of the transactions.
+`params: ['0x1b4', true]`
+
 ### Returns
 See eth_getBlockByHash
 ### Example
-// Request
-curl -X POST --data '{"jsonrpc":"2.0","method":"eth_getBlockByNumber","params":["0x1b4", true],"id":1}'
-Result see eth_getBlockByHash
 
 ## eth_getTransactionReceipt
 Returns the receipt of a transaction by transaction hash.
