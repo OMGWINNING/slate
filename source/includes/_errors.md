@@ -30,7 +30,7 @@ For JSON-RPC specific errors, the Alchemy API returns a `200` with the JSON-RPC 
 }
 ```
 
-### Standrd JSON-RPC Errors
+### Standard JSON-RPC Errors
 | Code    | Possible Return message | Description |
 | --------|-------------------------|-------------|
 |-32700 | Parse error       | Invalid JSON was received by the server. An error occurred on the server while parsing the JSON text. |
