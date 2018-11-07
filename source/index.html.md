@@ -3,7 +3,6 @@ title: Alchemy API Documentation
 
 toc_footers:
   - <a href='mailto:api@alchemyinsights.io?subject=I%20would%20like%20an%20API%20Key'>Get an Alchemy API Key</a>
-  - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
 
 includes:
   - errors
