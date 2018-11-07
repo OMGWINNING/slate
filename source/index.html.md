@@ -436,6 +436,7 @@ Returns the number of transactions in a block from a block matching the given bl
 `params: [
    '0xb903239f8543d04b5dc1ba6579132b143087c68db1b2168786408fcbce568238'
 ]`
+
 ### Returns
  - `QUANTITY` - integer of the number of transactions in this block.
 
@@ -633,6 +634,7 @@ params: [
    '0x29c', // 668
    '0x0' // 0
 ]
+
 ### Returns
 See eth_getTransactionByHash
 
@@ -655,9 +657,34 @@ Returns information about a uncle of a block by number and uncle index position.
    '0x29c', // 668
    '0x0' // 0
 ]`
+
 ### Returns
 [See eth_getBlockByHash](#eth_getBlockByBash)
 Note: An uncle doesn't contain individual transactions.
+
+## eth_getUncleByBlockHashAndIndex
+```shell
+# Request
+curl https://eth-mainnet.alchemyapi.io/jsonrpc/your-api-key \
+-X POST \
+-H "Content-Type: application/json" \
+-d '{"jsonrpc":"2.0","method":"eth_getUncleByBlockHashAndIndex","params":["0xc6ef2fc5426d6ad6fd9e2a26abeab0aa2411b7ab17f30a99d3cb96aed1d1055b", "0x0"],"id":1}'
+```
+
+Returns information about a uncle of a block by number and uncle index position.
+### Parameters
+
+ - `QUANTITY|TAG` - a block number, or the string "earliest", "latest" or "pending", as in the default block parameter.
+ - `QUANTITY` - the uncle's index position.
+`params: [
+   '0xc6ef2fc5426d6ad6fd9e2a26abeab0aa2411b7ab17f30a99d3cb96aed1d1055b',
+   '0x0' // 0
+]`
+
+### Returns
+[See eth_getBlockByHash](#eth_getBlockByBash)
+Note: An uncle doesn't contain individual transactions.
+
 
 
 ## eth_getUncleCountByBlockHash
@@ -685,6 +712,7 @@ Returns the number of uncles in a block from a block matching the given block ha
 `params: [
    '0xc94770007dda54cF92009BFF0dE90c06F603a09f'
 ]`
+
 ### Returns
 `QUANTITY` - integer of the number of uncles in this block.
 
