@@ -313,7 +313,7 @@
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#standrd-json-rpc-errors" class="toc-h2 toc-link" data-title="Standrd JSON-RPC Errors">Standrd JSON-RPC Errors</a>
+                    <a href="#standard-json-rpc-errors" class="toc-h2 toc-link" data-title="Standard JSON-RPC Errors">Standard JSON-RPC Errors</a>
                   </li>
               </ul>
           </li>
@@ -874,7 +874,7 @@ curl https://eth-mainnet.alchemyapi.io/jsonrpc/your-api-key <span class="se">\</
 -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
 -d <span class="s1">'{"jsonrpc":"2.0","method":"eth_getUncleByBlockHashAndIndex","params":["0xc6ef2fc5426d6ad6fd9e2a26abeab0aa2411b7ab17f30a99d3cb96aed1d1055b", "0x0"],"id":1}'</span>
 </code></pre>
-<p>Returns information about a uncle of a block by number and uncle index position.</p>
+<p>Returns information about a uncle of a block by hash and uncle index position.</p>
 <h3 id='parameters-15'>Parameters</h3>
 <ul>
 <li><code>QUANTITY|TAG</code> - a block number, or the string &quot;earliest&quot;, &quot;latest&quot; or &quot;pending&quot;, as in the default block parameter.</li>
@@ -1126,7 +1126,7 @@ Use eth_getTransactionReceipt to get the contract address, after the transaction
         </span><span class="s2">"Invalid params: invalid length 63, expected a 0x-prefixed, padded, hex-encoded hash with length 64."</span><span class="p">},</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="mi">1</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='standrd-json-rpc-errors'>Standrd JSON-RPC Errors</h3>
+</span></code></pre><h3 id='standard-json-rpc-errors'>Standard JSON-RPC Errors</h3>
 <table><thead>
 <tr>
 <th>Code</th>
